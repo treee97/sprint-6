@@ -22,12 +22,16 @@ function App() {
     const handlerBack = () => {
       if (changeStory === 0) {
         setChangeStory(data.length - 1)
+        //si nuestro item es el primero, volvemos al ultimo item del array.
       } else{ setChangeStory(changeStory - 1) }
+        //restamos 1 a nuestro index
     }
     const handlerNext = () => {
       if(changeStory === data.length - 1){
         setChangeStory(0);
+        //si estamos en el ultimo item, volvemos al primero
       } else { setChangeStory(changeStory + 1) }
+        // sumamos 1 a nuestro state.
     }
   return (
     <>

@@ -22,7 +22,7 @@ export type textProp = {
 
 const Button: React.FC<textProp> = ({text, onClick}) => {
   return (
-    <ButtonElement onClick={onClick} aria-readonly>{text}</ButtonElement>
+    <ButtonElement onClick={onClick}>{text}</ButtonElement>
   )
 }
 
