@@ -13,26 +13,35 @@ const ContainerButton = styled.div`
  // &:hover {
   //   para hover meter esto dentro del ` `;
   //   }
+  //https://www.youtube.com/watch?v=jRxoO-Zd0pQ
 
 function App() {
- const [changeStory, setChangeStory] = useState(0);
-  //onClick ={(index: number) => setChangeStory(index + 1)}
-    //pasamos una prop y cuando cliquemos
+ const [changeStory, setChangeStory] = useState<number>(0);
+    //el 0 es la posicion de la primera Escena.
+
+    const handlerBack = () => {
+      if (changeStory === 0) {
+        setChangeStory(data.length - 1)
+      } else{ setChangeStory(changeStory - 1) }
+    }
+    const handlerNext = () => {
+      if(changeStory === data.length - 1){
+        setChangeStory(0);
+      } else { setChangeStory(changeStory + 1) }
+    }
   return (
     <>
-  {/* <Button onClick = onClick ={() => setChangeStory(index + 1)}/> */}
-  {/* <Button onClick = onClick ={() => setChangeStory(index + 1)}/> */}
     <ContainerButton>
-      <Button text="Anterior" onClick ={(index: number) => setChangeStory(index + 1)}/> 
-      <Button text="Siguiente" />
+      <Button onClick={handlerBack} text="Anterior" /> 
+      <Button onClick={handlerNext} text="Siguiente" />
     </ContainerButton>
+
       {data.map((sentence, index) => (
-          <Escena key={index} sentence={sentence}/>
+          <Escena key={index} sentence={sentence} isFocused={changeStory === index} />
         ))
       }
     </>
   )
 }
-//primero texto rojo por default
-//clicamos siguiente. el siguiente bloque cambia a rojo
+
 export default App

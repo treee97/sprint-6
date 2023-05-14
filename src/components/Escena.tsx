@@ -4,10 +4,10 @@ import styled from "styled-components";
 //Exporting them gives us the option to use them in different places throughout our application if we need to extend or compose them.
 //https://www.totaltypescript.com/tutorials/react-with-typescript/components/ensure-props-are-present-and-defined/solutionç
 
-const Container = styled.div`
+const Container = styled.div<{isFocused: boolean}>`
   border: 2px solid white;
   border-radius: 25px;
-  background: rgba(255, 255, 255, 0.4);
+  background: ${({isFocused}) => isFocused ? 'rgba(255, 0, 0, 0.4)' : 'rgba(255, 255, 255, 0.4)'};
   padding: 10px;
   margin: 10px;
 `;
@@ -15,16 +15,17 @@ const Container = styled.div`
 
 type sentenceProp = {
   sentence: string;
+  isFocused: boolean;
 }
-const Escena = ({sentence} : sentenceProp) => {
+const Escena: React.FC<sentenceProp> = ({sentence, isFocused}) => {
   //destructuring
-  
 
   return (
     <>
-        <Container>{sentence}</Container>
+        <Container isFocused={isFocused}>{sentence}</Container>
     </>
   )
 }
+
 
 export default Escena

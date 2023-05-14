@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
-const ButtonContainer = styled.div`
+const ButtonElement = styled.div`
     padding: 2rem;
     font-size: 2rem;
     border: 3px solid white;
     width: 50%;
     cursor: pointer;
+    user-select: none;
 
 
     &:hover{
@@ -14,13 +15,14 @@ const ButtonContainer = styled.div`
 `;
 //los styled siempre CamelCase
 
-type textProp = {
+export type textProp = {
     text: string;
+    onClick?: () => void;
 }
 
-const Button = ({text}: textProp) => {
+const Button: React.FC<textProp> = ({text, onClick}) => {
   return (
-    <ButtonContainer>{text}</ButtonContainer>
+    <ButtonElement onClick={onClick} aria-readonly>{text}</ButtonElement>
   )
 }
 
