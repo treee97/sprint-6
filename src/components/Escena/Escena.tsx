@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from "styled-components";
 //declarar un type?
 // we could export the type 
@@ -15,16 +14,16 @@ const Container = styled.div<{isFocused: boolean}>`
 
 
 type sentenceProp = {
-  sentence: string;
+  text: string;
   isFocused: boolean;
 }
 
-const Escena: React.FC<sentenceProp> = ({sentence, isFocused}) => {
+const Escena: React.FC<sentenceProp> = ({text, isFocused}) => {
   //destructuring
 
   return (
     <>
-        <Container isFocused={isFocused}>{sentence}</Container>
+        <Container isFocused={isFocused}>{text}</Container>
     </>
   )
 }

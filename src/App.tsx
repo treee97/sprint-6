@@ -56,8 +56,8 @@ function App() {
       <Button onClick={handlerNext} text="Siguiente" />
     </ContainerButton>
 
-      {data.map((sentence, index) => (
-          <Escena key={index} sentence={sentence} isFocused={changeStory === index} />
+      {data.map((item, index) => (
+          <Escena key={index} text={item.txt} isFocused={changeStory === index} />
         ))
       }
       {/* https://www.pluralsight.com/guides/load-and-render-json-data-into-react-components */}

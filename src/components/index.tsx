@@ -1,5 +1,5 @@
-import Button from "./Button";
-import Escena from "./Escena";
+import Button from "./Button/Button";
+import Escena from "./Escena/Escena";
 
 export{
     Button,
