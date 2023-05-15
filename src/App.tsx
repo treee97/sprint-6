@@ -10,13 +10,21 @@ const ContainerButton = styled.div`
   align-items: center;
   justify-content: space-around;
 `;
+const ContainerScreen = styled.div`
+  width: 100%;
+  height: 100vh;
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+`
  // &:hover {
   //   para hover meter esto dentro del ` `;
   //   }
   //https://www.youtube.com/watch?v=jRxoO-Zd0pQ
 
 function App() {
- const [changeStory, setChangeStory] = useState<number>(0);
+  const [welcomeScreen, setWelcomeScreen] = useState<boolean>(false);
+  const [changeStory, setChangeStory] = useState<number>(0);
     //el 0 es la posicion de la primera Escena.
 
     const handlerBack = () => {
@@ -35,6 +43,13 @@ function App() {
     }
   return (
     <>
+    {
+      !welcomeScreen && (
+        <ContainerScreen>
+          <Button onClick={() => setWelcomeScreen(true)} text="Comenzar" />
+        </ContainerScreen>
+      )
+    }
     <ContainerButton>
       <Button onClick={handlerBack} text="Anterior" /> 
       <Button onClick={handlerNext} text="Siguiente" />

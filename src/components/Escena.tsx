@@ -17,6 +17,7 @@ type sentenceProp = {
   sentence: string;
   isFocused: boolean;
 }
+
 const Escena: React.FC<sentenceProp> = ({sentence, isFocused}) => {
   //destructuring
 
