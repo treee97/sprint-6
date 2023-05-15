@@ -10,6 +10,7 @@ const ContainerButton = styled.div`
   align-items: center;
   justify-content: space-around;
 `;
+
 const ContainerScreen = styled.div`
   width: 100%;
   height: 100vh;
@@ -59,6 +60,7 @@ function App() {
           <Escena key={index} sentence={sentence} isFocused={changeStory === index} />
         ))
       }
+      {/* https://www.pluralsight.com/guides/load-and-render-json-data-into-react-components */}
     </>
   )
 }
