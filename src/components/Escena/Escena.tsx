@@ -21,11 +21,10 @@ const Container = styled.div<{isFocused: boolean}>`
 
 type sentenceProp = {
   text: string;
-  img: string;
   isFocused: boolean;
 }
 
-const Escena: React.FC<sentenceProp> = ({text, img,  isFocused}) => {
+const Escena: React.FC<sentenceProp> = ({text,  isFocused}) => {
 
   
 

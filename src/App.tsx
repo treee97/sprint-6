@@ -25,11 +25,16 @@ const ContainerScreen = styled.div`
   //   }
   //https://www.youtube.com/watch?v=jRxoO-Zd0pQ
 
-// const Background = styled.div`
-//   background: ${img};
-//   background-position: center;
-//   background-size: cover;
-// `
+const Background = styled.div<{ img: string }>`
+  background-image: ${
+      ({ img }) => `url(${img})`
+    };
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+`;
+//https://styled-components.com/docs/advanced typescript no incluido
 
 
 
@@ -56,7 +61,7 @@ function App() {
         // sumamos 1 a nuestro state.
     }
 
-    const showHome = ()=>{
+    const showHome = () => {
      setWelcomeScreen(false)
     }
 
@@ -76,11 +81,13 @@ function App() {
           <Button onClick={handlerBack} text="Anterior" /> 
           <Button onClick={handlerNext} text="Siguiente" />
         </ContainerButton>
-
-        {data.map((item, index) => (
-            <Escena key={index} text={item.txt} img={item.img} isFocused={changeStory === index} />
-          ))
-        }
+        <Background img={data[changeStory].img}>
+          {/* data[numero index que sacamos de isFocused].img */}
+          {data.map((item, index) => (
+              <Escena key={index} text={item.txt} isFocused={changeStory === index} />
+            ))
+          }
+        </Background>
       </>
     )}
   
