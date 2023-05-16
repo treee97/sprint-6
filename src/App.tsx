@@ -1,7 +1,8 @@
 import './App.css';
 import { Button, Escena } from './components';
-import { data } from './constants';
-import {useState} from "react";
+import data from './constants/data';
+import images from './constants/images';
+import {useEffect, useState} from "react";
 import styled from "styled-components";
 
 
@@ -13,6 +14,7 @@ const ContainerButton = styled.div`
 
 const ContainerScreen = styled.div`
   width: 100%;
+  background: green;
   height: 100vh;
   display: flex; 
   align-items: center;
@@ -23,8 +25,19 @@ const ContainerScreen = styled.div`
   //   }
   //https://www.youtube.com/watch?v=jRxoO-Zd0pQ
 
+// const Background = styled.div`
+//   background: ${img};
+//   background-position: center;
+//   background-size: cover;
+// `
+
+
+
 function App() {
-  const [welcomeScreen, setWelcomeScreen] = useState<boolean>(false);
+  useEffect(()=>{
+    console.log("data!!!",data)
+  },[])
+  const [welcomeScreen, setWelcomeScreen] = useState<boolean>(true);
   const [changeStory, setChangeStory] = useState<number>(0);
     //el 0 es la posicion de la primera Escena.
 
@@ -42,25 +55,35 @@ function App() {
       } else { setChangeStory(changeStory + 1) }
         // sumamos 1 a nuestro state.
     }
+
+    const showHome = ()=>{
+     setWelcomeScreen(false)
+    }
+
   return (
     <>
-    {
-      !welcomeScreen && (
-        <ContainerScreen>
-          <Button onClick={() => setWelcomeScreen(true)} text="Comenzar" />
-        </ContainerScreen>
-      )
-    }
-    <ContainerButton>
-      <Button onClick={handlerBack} text="Anterior" /> 
-      <Button onClick={handlerNext} text="Siguiente" />
-    </ContainerButton>
+    
+    {welcomeScreen === true && (
+      <ContainerScreen>
+        <Button onClick={showHome} text="Comenzar" />
+      </ContainerScreen>
+    )}
 
-      {data.map((item, index) => (
-          <Escena key={index} text={item.txt} isFocused={changeStory === index} />
-        ))
-      }
-      {/* https://www.pluralsight.com/guides/load-and-render-json-data-into-react-components */}
+    {welcomeScreen === false && 
+    (
+      <>
+        <ContainerButton>
+          <Button onClick={handlerBack} text="Anterior" /> 
+          <Button onClick={handlerNext} text="Siguiente" />
+        </ContainerButton>
+
+        {data.map((item, index) => (
+            <Escena key={index} text={item.txt} img={item.img} isFocused={changeStory === index} />
+          ))
+        }
+      </>
+    )}
+  
     </>
   )
 }

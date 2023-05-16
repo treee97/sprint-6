@@ -11,19 +11,34 @@ const Container = styled.div<{isFocused: boolean}>`
   padding: 10px;
   margin: 10px;
 `;
+// const Background = styled.div`
+//     background: ${img};
+//     background-position: center;
+//     background-size: cover;
+//   `;
+
 
 
 type sentenceProp = {
   text: string;
+  img: string;
   isFocused: boolean;
 }
 
-const Escena: React.FC<sentenceProp> = ({text, isFocused}) => {
-  //destructuring
+const Escena: React.FC<sentenceProp> = ({text, img,  isFocused}) => {
 
+  
+
+  //destructuring
+  
   return (
     <>
-        <Container isFocused={isFocused}>{text}</Container>
+    {/* La imagen no puede ir aqui o sera renderizada en cada componente Escena */}
+
+          <Container isFocused={isFocused}>
+            {text}
+          </Container>
+        
     </>
   )
 }
