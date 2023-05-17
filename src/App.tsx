@@ -1,7 +1,6 @@
 import './App.css';
 import { Button, Escena } from './components';
 import data from './constants/data';
-import images from './constants/images';
 import {useEffect, useState} from "react";
 import styled from "styled-components";
 
@@ -77,12 +76,14 @@ function App() {
     {welcomeScreen === false && 
     (
       <>
-        <ContainerButton>
-          <Button onClick={handlerBack} text="Anterior" /> 
-          <Button onClick={handlerNext} text="Siguiente" />
-        </ContainerButton>
+        
         <Background img={data[changeStory].img}>
           {/* data[numero index que sacamos de isFocused].img */}
+          <ContainerButton>
+            <Button onClick={handlerBack} text="Anterior" /> 
+            <Button onClick={handlerNext} text="Siguiente" />
+          </ContainerButton>
+        
           {data.map((item, index) => (
               <Escena key={index} text={item.txt} isFocused={changeStory === index} />
             ))

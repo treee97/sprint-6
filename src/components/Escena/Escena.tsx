@@ -7,16 +7,12 @@ import styled from "styled-components";
 const Container = styled.div<{isFocused: boolean}>`
   border: 2px solid white;
   border-radius: 25px;
-  background: ${({isFocused}) => isFocused ? 'rgba(255, 0, 0, 0.4)' : 'rgba(255, 255, 255, 0.4)'};
+  background: ${({isFocused}) => isFocused ? 'rgba(255, 0, 0, 0.5)' : 'rgba(255, 255, 255, 0.5)'};
   padding: 10px;
   margin: 10px;
+  font-size: 20px;
+  font-weight:500;
 `;
-// const Background = styled.div`
-//     background: ${img};
-//     background-position: center;
-//     background-size: cover;
-//   `;
-
 
 
 type sentenceProp = {
@@ -25,11 +21,6 @@ type sentenceProp = {
 }
 
 const Escena: React.FC<sentenceProp> = ({text,  isFocused}) => {
-
-  
-
-  //destructuring
-  
   return (
     <>
     {/* La imagen no puede ir aqui o sera renderizada en cada componente Escena */}
