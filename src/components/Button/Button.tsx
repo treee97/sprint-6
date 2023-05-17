@@ -15,12 +15,12 @@ const ButtonElement = styled.div`
 `;
 //los styled siempre CamelCase
 
-export type textProp = {
+export type TextProp = {
     text: string;
     onClick?: () => void;
 }
 
-const Button: React.FC<textProp> = ({text, onClick}) => {
+const Button = ({text, onClick} : TextProp) => {
   return (
     <ButtonElement onClick={onClick}>{text}</ButtonElement>
   )

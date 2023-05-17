@@ -15,12 +15,12 @@ const Container = styled.div<{isFocused: boolean}>`
 `;
 
 
-type sentenceProp = {
+export type SentenceProp = {
   text: string;
   isFocused: boolean;
 }
 
-const Escena: React.FC<sentenceProp> = ({text,  isFocused}) => {
+const Escena= ({text,  isFocused}: SentenceProp) => {
   return (
     <>
     {/* La imagen no puede ir aqui o sera renderizada en cada componente Escena */}
